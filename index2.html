@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Imágenes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .slider-container {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider {
+            width: 400%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+           
+        .slide {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        
+        
+        /* Controles manuales */
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-controls label {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        #radio1:checked ~ .slider {
+            transform: translateX(0);
+        }
+        
+        #radio2:checked ~ .slider {
+            transform: translateX(-25%);
+        }
+        
+        #radio3:checked ~ .slider {
+            transform: translateX(-50%);
+        }
+        
+        #radio4:checked ~ .slider {
+            transform: translateX(-75%);
+        }
+        
+        #radio1:checked ~ .slider-controls label:nth-child(1),
+        #radio2:checked ~ .slider-controls label:nth-child(2),
+        #radio3:checked ~ .slider-controls label:nth-child(3),
+        #radio4:checked ~ .slider-controls label:nth-child(4) {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <input type="radio" name="slider" id="radio1" checked>
+        <input type="radio" name="slider" id="radio2">
+        <input type="radio" name="slider" id="radio3">
+        <input type="radio" name="slider" id="radio4">
+        
+        <div class="slider auto-slide">
+            <div class="slide">
+                <img src="img/backgroun-image.jpeg" alt="Imagen 1">
+            </div>
+            <div class="slide">
+                <img src="img/capuchino.jpeg" alt="Imagen 2">
+            </div>
+            <div class="slide">
+                <img src="img/expreso.jpeg" alt="Imagen 3">
+            </div>
+            <div class="slide">
+                <img src="img/late.jpeg" alt="Imagen 4">
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <label for="radio1"></label>
+            <label for="radio2"></label>
+            <label for="radio3"></label>
+            <label for="radio4"></label>
+        </div>
+    </div>
+
+</body>
+</html>
