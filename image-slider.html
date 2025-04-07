@@ -10,6 +10,24 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        @keyframes slideShow {
+            0%, 20% {
+                transform: translateX(0);
+            }
+            25%, 45% {
+                transform: translateX(-25%);
+            }
+            50%, 70% {
+                transform: translateX(-50%);
+            }
+            75%, 95% {
+                transform: translateX(-75%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
         
         body {
             display: flex;
@@ -32,7 +50,7 @@
             height: 100%;
             display: flex;
             transition: transform 0.5s ease-in-out;
-            animation: slideShow 20s infinite;
+            animation: slideShow 6s infinite;
         }
         
         .slide {
@@ -61,81 +79,11 @@
             margin-bottom: 10px;
         }
         
-        /* Controles manuales */
-        .slider-controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        
-        .slider-controls label {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        input[type="radio"] {
-            display: none;
-        }
-        
-        #radio1:checked ~ .slider {
-            transform: translateX(0);
-            animation: none;
-        }
-        
-        #radio2:checked ~ .slider {
-            transform: translateX(-25%);
-            animation: none;
-        }
-        
-        #radio3:checked ~ .slider {
-            transform: translateX(-50%);
-            animation: none;
-        }
-        
-        #radio4:checked ~ .slider {
-            transform: translateX(-75%);
-            animation: none;
-        }
-        
-        #radio1:checked ~ .slider-controls label:nth-child(1),
-        #radio2:checked ~ .slider-controls label:nth-child(2),
-        #radio3:checked ~ .slider-controls label:nth-child(3),
-        #radio4:checked ~ .slider-controls label:nth-child(4) {
-            background-color: white;
-        }
-        
-        @keyframes slideShow {
-            0%, 20% {
-                transform: translateX(0);
-            }
-            25%, 45% {
-                transform: translateX(-25%);
-            }
-            50%, 70% {
-                transform: translateX(-50%);
-            }
-            75%, 95% {
-                transform: translateX(-75%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
+
     </style>
 </head>
 <body>
     <div class="slider-container">
-        <input type="radio" name="slider" id="radio1" checked>
-        <input type="radio" name="slider" id="radio2">
-        <input type="radio" name="slider" id="radio3">
-        <input type="radio" name="slider" id="radio4">
         
         <div class="slider">
             <div class="slide">
@@ -166,13 +114,6 @@
                     <p>Café Late</p>
                 </div>
             </div>
-        </div>
-        
-        <div class="slider-controls">
-            <label for="radio1"></label>
-            <label for="radio2"></label>
-            <label for="radio3"></label>
-            <label for="radio4"></label>
         </div>
     </div>
 </body>
