@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Imágenes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .slider-container {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider {
+            width: 400%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            animation: slideShow 20s infinite;
+        }
+        
+        .slide {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+        
+        .slide-content h2 {
+            margin-bottom: 10px;
+        }
+        
+        /* Controles manuales */
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-controls label {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        #radio1:checked ~ .slider {
+            transform: translateX(0);
+            animation: none;
+        }
+        
+        #radio2:checked ~ .slider {
+            transform: translateX(-25%);
+            animation: none;
+        }
+        
+        #radio3:checked ~ .slider {
+            transform: translateX(-50%);
+            animation: none;
+        }
+        
+        #radio4:checked ~ .slider {
+            transform: translateX(-75%);
+            animation: none;
+        }
+        
+        #radio1:checked ~ .slider-controls label:nth-child(1),
+        #radio2:checked ~ .slider-controls label:nth-child(2),
+        #radio3:checked ~ .slider-controls label:nth-child(3),
+        #radio4:checked ~ .slider-controls label:nth-child(4) {
+            background-color: white;
+        }
+        
+        @keyframes slideShow {
+            0%, 20% {
+                transform: translateX(0);
+            }
+            25%, 45% {
+                transform: translateX(-25%);
+            }
+            50%, 70% {
+                transform: translateX(-50%);
+            }
+            75%, 95% {
+                transform: translateX(-75%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <input type="radio" name="slider" id="radio1" checked>
+        <input type="radio" name="slider" id="radio2">
+        <input type="radio" name="slider" id="radio3">
+        <input type="radio" name="slider" id="radio4">
+        
+        <div class="slider">
+            <div class="slide">
+                <img src="img/backgroun-image.jpeg" alt="Imagen 1">
+                <div class="slide-content">
+                    <h2>Café</h2>
+                    <p>Taza de café</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="img/capuchino.jpeg" alt="Imagen 2">
+                <div class="slide-content">
+                    <h2>Capuchino</h2>
+                    <p>Café capuchino</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="img/expreso.jpeg" alt="Imagen 3">
+                <div class="slide-content">
+                    <h2>Expreso</h2>
+                    <p>Café expreso</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="img/late.jpeg" alt="Imagen 4">
+                <div class="slide-content">
+                    <h2>Late</h2>
+                    <p>Café Late</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <label for="radio1"></label>
+            <label for="radio2"></label>
+            <label for="radio3"></label>
+            <label for="radio4"></label>
+        </div>
+    </div>
+</body>
+</html>
